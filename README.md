@@ -18,4 +18,14 @@ the train/validation split and the stratification are as close
 as possible to the specified values.
 
 ## Using the Code
+All the code is contained in the `group_split.py` file.
+The `main` function runs a benchmark between the two
+optimization algorithms. It generates a problem matrix using
+the `generate_counts` function and then submits it to both
+algorithms, outputting the time taken, final cost value and
+the approximations to both the desired split and the 
+stratification.
 
+Please note that the code is on a proof-of-concept stage. In 
+thee future I plan to create an independent Python package
+with these ideas.
