@@ -29,3 +29,6 @@ stratification.
 Please note that the code is on a proof-of-concept stage. In 
 thee future I plan to create an independent Python package
 with these ideas.
+
+## Medium Article
+[Stratified Splitting of Grouped Datasets Using Optimization](https://towardsdatascience.com/stratified-splitting-of-grouped-datasets-using-optimization-bdc12fb6e691)
