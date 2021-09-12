@@ -5,7 +5,7 @@ from numpy.random import default_rng
 from numba import jit
 from collections import namedtuple
 
-RANDOM_SEED = None
+RANDOM_SEED = 23
 Solution = namedtuple("Solution", "cost index")
 
 
@@ -313,11 +313,11 @@ def print_solution(problem, solution, p):
 
 
 def main():
-    num_groups = 250
-    num_classes = 2
-    max_group_size = 10000
-    max_group_perc = 0.4
-    p = 0.3
+    num_groups = 250            # Number of groups to simulate
+    num_classes = 2             # Number of classes
+    max_group_size = 10000      # Maximum group size
+    max_group_perc = 0.4        # Maximum proportion for each class
+    p = 0.3                     # Validation split proportion
 
     max_empty_iterations = 100
     max_intensity_iterations = 10
