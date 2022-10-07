@@ -4,28 +4,10 @@ import time
 from numpy.random import default_rng
 from numba import jit
 from collections import namedtuple
+from tools.functions import index_to_str
 
 RANDOM_SEED = 23
 Solution = namedtuple("Solution", "cost index")
-
-
-@jit(nopython=True)
-def index_to_str(idx):
-    """
-    Generates a string representation from an index array.
-    @param idx: The NumPy boolean index array.
-    @return: The string representation of the array.
-    """
-    num_chars = int(idx.shape[0] / 6 + 0.5)
-    s = ""
-    for i in range(num_chars):
-        b = i * 6
-        six = idx[b:b+6]
-        c = 0
-        for j in range(six.shape[0]):
-            c = c * 2 + int(six[j])
-        s = s + chr(c+32)
-    return s
 
 
 def create_initial_solution(sample_counts, p):
@@ -181,7 +163,8 @@ def generate_counts(num_groups, num_classes,
 
     for i in range(1, num_groups):
         for j in range(1, num_classes):
-            sample_cnt[i, j] = rng.integers(low=0, high=max_group_percent * sample_cnt[i, 0] - sample_cnt[i, 1:j+1].sum())
+            sample_cnt[i, j] = rng.integers(low=0,
+                                            high=max_group_percent * sample_cnt[i, 0] - sample_cnt[i, 1:j+1].sum())
     return sample_cnt
 
 
@@ -255,7 +238,7 @@ class GradientSolver(BaseSolver):
     def solve(self, min_cost, max_empty_iterations,
               max_intensity_iterations, verbose=True):
         """
-        Uses the gradient solver to calculate the best split.
+        This function uses the gradient solver to calculate the best split.
         @param min_cost: Minimum cost criterion.
         @param max_empty_iterations: Maximum number of non-improving iterations.
         @param max_intensity_iterations: Maximum number of intensity iterations.
